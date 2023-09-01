@@ -1,0 +1,228 @@
+#甬哥Github项目  ：github.com/yonggekkk
+#甬哥Blogger博客 ：ygkkk.blogspot.com
+#甬哥YouTube频道 ：www.youtube.com/@ygkkk
+#====clash-meta精简配置文件模版（V23.8.31）=====
+#====参考自clash-meta官方文档：wiki.metacubex.one=====
+
+#（一区）=============================（clash配置）
+#dns可自行修改
+port: 7890
+allow-lan: true
+mode: rule
+log-level: info
+unified-delay: true
+global-client-fingerprint: chrome
+dns:
+  enable: true
+  listen: :53
+  ipv6: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  default-nameserver: 
+    - 223.5.5.5
+    - 8.8.8.8
+  nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+  fallback:
+    - https://1.0.0.1/dns-query
+    - tls://dns.google
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    ipcidr:
+      - 240.0.0.0/4
+
+
+
+#（二区）==============================（代理协议）
+#当前12个协议节点配置模版，按需求修改，如某协议节点不用，则无需删除，确保三区代理分流中没有该name节点名称即可
+proxies:
+#==============================（vless-ws-tls节点）
+- name: 香港vless                           #可自定义名称
+  type: vless
+  server: 8.210.55.134                          #解析的域名或者优选域名IP
+  port: 2096                                      #自定义的端口
+  uuid: 3df833d3-4f4d-4371-a812-1b7fa82c0946       #自定义的uuid
+  udp: true
+  tls: true
+  network: ws
+  servername: vt.znxh.eu.org                     #sni域名，与下面的host一致
+  ws-opts:
+    path: "/aa2"                              #" "内自定义的path路径
+    headers:
+      Host: vt.znxh.eu.org                       #host域名，与上面的servername一致
+
+#==============================（vless-ws-tls节点）
+- name: 香港vless2                           #可自定义名称
+  type: vless
+  server: 131.186.20.197                          #解析的域名或者优选域名IP
+  port: 2096                                      #自定义的端口
+  uuid: 3df833d3-4f4d-4371-a812-1b7fa82c0946       #自定义的uuid
+  udp: true
+  tls: true
+  network: ws
+  servername: vt.znxh.eu.org                     #sni域名，与下面的host一致
+  ws-opts:
+    path: "/aa2"                              #" "内自定义的path路径
+    headers:
+      Host: vt.znxh.eu.org                       #host域名，与上面的servername一致
+
+#==============================（vless-ws-tls节点）
+- name: 美国vl                           #可自定义名称
+  type: vless
+  server: 146.56.152.36                          #解析的域名或者优选域名IP
+  port: 443                                      #自定义的端口
+  uuid: 8e89d26b-d256-4193-d3d2-0baa3d912b59       #自定义的uuid
+  udp: true
+  tls: true
+  network: ws
+  servername: crm.znxh.eu.org                     #sni域名，与下面的host一致
+  ws-opts:
+    path: "/aa2"                              #" "内自定义的path路径
+    headers:
+      Host: crm.znxh.eu.org                       #host域名，与上面的servername一致
+#==============================（vless-ws-tls节点）
+- name: 美国vl2                           #可自定义名称
+  type: vless
+  server: 131.186.20.197                          #解析的域名或者优选域名IP
+  port: 443                                      #自定义的端口
+  uuid: 8e89d26b-d256-4193-d3d2-0baa3d912b59       #自定义的uuid
+  udp: true
+  tls: true
+  network: ws
+  servername: crm.znxh.eu.org                     #sni域名，与下面的host一致
+  ws-opts:
+    path: "/aa2"                              #" "内自定义的path路径
+    headers:
+      Host: crm.znxh.eu.org                       #host域名，与上面的servername一致
+#==============================（vless-ws-tls节点）
+- name: 美国vl3                           #可自定义名称
+  type: vless
+  server: 193.122.119.116                          #解析的域名或者优选域名IP
+  port: 2096                                      #自定义的端口
+  uuid: 8e89d26b-d256-4193-d3d2-0baa3d912b59       #自定义的uuid
+  udp: true
+  tls: true
+  network: ws
+  servername: crm.znxh.eu.org                     #sni域名，与下面的host一致
+  ws-opts:
+    path: "/aa2"                              #" "内自定义的path路径
+    headers:
+      Host: crm.znxh.eu.org                       #host域名，与上面的servername一致
+
+#==============================（vmess-ws-tls节点）
+- name: 香港vm                           #可自定义名称
+  type: vmess
+  server: 131.186.25.200                          #解析的域名或者优选域名IP
+  port: 443                                      #自定义的端口
+  uuid: cd0cf59b-1011-437a-c387-8a73a6d8c465       #自定义的uuid
+  alterId: 1
+  cipher: auto
+  udp: true
+  tls: true
+  network: ws
+  servername: vt.znxh.eu.org                     #sni域名，与下面的host一致
+  ws-opts:
+    path: "/aa3"                              #自定义的path路径
+    headers:
+      Host: vt.znxh.eu.org                       #host域名，与上面的servername一致
+
+#==============================（vmess-ws-tls节点）
+- name: 香港vm2                           #可自定义名称
+  type: vmess
+  server: 152.70.233.204                          #解析的域名或者优选域名IP
+  port: 443                                      #自定义的端口
+  uuid: cd0cf59b-1011-437a-c387-8a73a6d8c465       #自定义的uuid
+  alterId: 1
+  cipher: auto
+  udp: true
+  tls: true
+  network: ws
+  servername: vt.znxh.eu.org                     #sni域名，与下面的host一致
+  ws-opts:
+    path: "/aa3"                              #自定义的path路径
+    headers:
+      Host: vt.znxh.eu.org                       #host域名，与上面的servername一致
+#==============================（vmess-ws节点）
+- name: 美国vm                               #可自定义名称
+  type: vmess
+  server: 131.186.20.197                          #解析的域名或者优选域名IP
+  port: 2096                                       #自定义的端口
+  uuid: a0568aeb-f62e-41a5-c4db-f981fe4d9dc9       #自定义的uuid
+  alterId: 2
+  cipher: auto
+  udp: true
+  tls: false
+  network: ws
+  servername: crm.znxh.eu.org                     #sni域名，与下面的host一致
+  ws-opts:
+    path: "/aa2"                              #" "内自定义的path路径
+    headers:
+      Host: crm.znxh.eu.org                       #host域名，与上面的servername一致
+
+#==============================（warp-wireguard节点）  
+- name: warp+                                   #可自定义名称
+  type: wireguard         
+  server: engage.cloudflareclient.com                                     #可自定义优选对端IP，与下面port的端口相对应
+  port: 2408                                                 #可自定义优选对端IP，与上面server的IP相对应
+  ip: 172.16.0.2
+  ipv6: 2606:4700:110:8c8a:f88:6864:483c:a416               #与private-key相对应，如删除本行，表示仅IPV4
+  public-key: bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=
+  private-key: mG570ftNuCDkQRdLf5ZypIf929WElNk4dqkXp5GiRlE=  #获取private-key，私key
+  udp: true
+
+
+
+#（三区）==============================（代理分流）
+#分流组可自行创建添加，proxies参数下的name节点名称，按需求自行增减，确保出现的name节点名称在二区代理协议中可查找
+proxy-groups:
+- name: 负载均衡
+  type: load-balance
+  url: http://www.gstatic.com/generate_204
+  interval: 300
+  proxies:
+    - warp+                                  #自定义添加协议的name字段
+    - 香港vless 
+    - 香港vless2
+    - 美国vl
+
+- name: 自动选择
+  type: url-test
+  url: http://www.gstatic.com/generate_204
+  interval: 300
+  tolerance: 50
+  proxies:
+    - 香港vless                   #自定义添加协议的name字段                
+    - 香港vless2
+    - 美国vl
+    - 美国vl2
+    - 美国vl3
+    - 香港vm
+    - 香港vm2
+    - 美国vm
+    - warp+
+    
+- name: 🌍选择代理节点
+  type: select
+  proxies:
+    - 负载均衡                                            #自定义添加协议的name字段
+    - 自动选择
+    - DIRECT
+    - 香港vless                                   
+    - 香港vless2
+    - 美国vl
+    - 美国vl2
+    - 美国vl3
+    - 香港vm
+    - 香港vm2
+    - 美国vm
+    - warp+
+
+
+
+#（四区）==============================（代理规则）
+#代理规则可自行添加 
+rules:
+  - GEOIP,CN,DIRECT
+  - MATCH,🌍选择代理节点
